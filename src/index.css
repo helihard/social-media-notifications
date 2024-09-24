@@ -33,6 +33,19 @@ body {
   margin-bottom: 20px;
 }
 
+button {
+  background-color: inherit;
+  color: var(--grayishblue);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover,
+button:active {
+  color: var(--blue);
+}
+
 .notification-link-div, 
 .notification-image-div {
   display: grid;
@@ -63,6 +76,44 @@ body {
 
 .thumbnail {
   grid-column: 3;
+}
+
+.name {
+  color: var(--verydarkblue);
+  font-weight: 800;
+  margin-right: 5px;
+}
+
+.action {
+  color: var(--darkgrayishblue);
+}
+
+.linked-content {
+  margin-left: 5px;
+}
+
+.time-since-action {
+  color: var(--grayishblue);
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+a:hover,
+a:active {
+  color: var(--blue);
+}
+
+.group-link {
+  color: var(--blue);
+}
+
+.post-link {
+  color: var(--darkgrayishblue);
 }
 
 .attribution { font-size: 11px; text-align: center; }

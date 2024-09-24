@@ -84,7 +84,7 @@ function MainContainer() {
     if (!linkedContent) {
       return null;
     } else if (linkedContent.type === "post" || linkedContent.type === "group") {
-      return <a href="#">{linkedContent.title}</a>;
+      return <a href="#" className={linkedContent.type === "group" ? "group-link" : "post-link"}>{linkedContent.title}</a>;
     } 
     return null;
   }
@@ -99,8 +99,12 @@ function MainContainer() {
           {notifications.map((notification) => (
             <div key={notification.index} className={notification.image ? "notification-image-div" : "notification-link-div"}>
               <img src={notification.avatar} alt={notification.name} className="avatar" />
-                <div>{notification.name}{notification.action}{renderLinkedContent(notification.linkedContent)}</div>
-                <div>{notification.timeSinceAction}</div>
+                <div>
+                  <span className="name">{notification.name}</span>
+                  <span className="action">{notification.action}</span>
+                  <span className="linked-content">{renderLinkedContent(notification.linkedContent)}</span>
+                </div>
+                <div className="time-since-action">{notification.timeSinceAction}</div>
                 {notification.image && (<img src={notification.image.src} alt={notification.image.alt} className="thumbnail" />)}
             </div>
           ))}
