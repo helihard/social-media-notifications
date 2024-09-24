@@ -87,7 +87,7 @@ function MainContainer() {
 
   return (
     <>
-      <div id="container">
+      <div id="main-container">
         <header>
           Notifications 3
           <button>Mark all as read</button>
