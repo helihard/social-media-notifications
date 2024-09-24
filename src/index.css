@@ -33,9 +33,36 @@ body {
   margin-bottom: 20px;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+header b {
+  font-size: 20px;
+  color: var(--verydarkblue);
+}
+
+#headline {
+  display: flex;
+  align-items: center;
+}
+
+#number-of-unread {
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 800;
+  margin-left: 8px;
+  padding: 2px 8px 3px;
+  border-radius: 4px;
+}
+
 button {
   background-color: inherit;
   color: var(--grayishblue);
+  font-family: "Plus Jakarta Sans", sans-serif;
   border: none;
   outline: none;
   cursor: pointer;

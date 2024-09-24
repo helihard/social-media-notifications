@@ -89,11 +89,16 @@ function MainContainer() {
     return null;
   }
 
+  function getNumberOfUnreadNotifications() {
+    const unreadNotifications = notifications.filter((notification) => notification.isUnread);
+    return unreadNotifications.length;
+  }
+
   return (
     <>
       <div id="main-container">
         <header>
-          Notifications 3
+          <div id="headline"><b>Notifications</b> <span id="number-of-unread">{getNumberOfUnreadNotifications()}</span></div>
           <button>Mark all as read</button>
         </header>
           {notifications.map((notification) => (
