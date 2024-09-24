@@ -102,7 +102,7 @@ function MainContainer() {
           <button>Mark all as read</button>
         </header>
           {notifications.map((notification) => (
-            <div key={notification.index} className={notification.image ? "notification-image-div" : "notification-link-div"}>
+            <div key={notification.index} className={`${notification.image ? "notification-image-div" : "notification-link-div"} ${notification.isUnread ? "unread" : ""}`}>
               <img src={notification.avatar} alt={notification.name} className="avatar" />
                 <div>
                   <span className="name">{notification.name}</span>

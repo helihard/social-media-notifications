@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
   background-color: var(--verylightgrayishblue);
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -30,6 +30,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
@@ -75,10 +76,12 @@ button:active {
 
 .notification-link-div, 
 .notification-image-div {
+  padding: 12px 15px;
   display: grid;
   grid-template-rows: auto auto;
   align-items: start;
   justify-content: start;
+  border-radius: 6px;
 }
 
 .notification-link-div {
@@ -87,6 +90,10 @@ button:active {
 
 .notification-image-div {
   grid-template-columns: auto 1fr auto;
+}
+
+.unread {
+  background-color: var(--verylightgrayishblue);
 }
 
 .avatar,
@@ -99,16 +106,19 @@ button:active {
 
 .avatar {
   grid-column: 1;
+  margin-right: 10px;
 }
 
 .thumbnail {
   grid-column: 3;
+  margin-left: 10px;
 }
 
 .name {
   color: var(--verydarkblue);
   font-weight: 800;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .action {
