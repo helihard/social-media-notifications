@@ -12,6 +12,7 @@ const notifications = [{
     name: "Mark Webber",
     action: "reacted to your recent post",
     linkedContent: { type: "post", title: "My first tournament today!" },
+    image: null,
     message: null,
     isUnread: true,
     timeSinceAction: "1m ago"
@@ -21,6 +22,7 @@ const notifications = [{
     name: "Angela Gray",
     action: "followed you",
     linkedContent: null,
+    image: null,
     message: null,
     isUnread: true,
     timeSinceAction: "5m ago"
@@ -30,6 +32,7 @@ const notifications = [{
     name: "Jacob Thompson",
     action: "has joined your group",
     linkedContent: { type: "group", title: "Chess Club" },
+    image: null,
     message: null,
     isUnread: true,
     timeSinceAction: "1 day ago"
@@ -39,6 +42,7 @@ const notifications = [{
     name: "Rizky Hasanuddin",
     action: "sent you a private message",
     linkedContent: null,
+    image: null,
     message: "Hello, thanks for setting up the Chess Club. I&apos;ve been a member for a few weeks now and I&apos;m already having lots of fun and improving my game.",
     isUnread: false,
     timeSinceAction: "5 days ago"
@@ -47,7 +51,8 @@ const notifications = [{
     avatar: avatarKimberlySmith,
     name: "Kimberly Smith",
     action: "commented on your picture",
-    linkedContent: { type: "image", src: chess, alt: "A game of chess" },
+    linkedContent: null,
+    image: { src: chess, alt: "A game of chess" },
     message: null,
     isUnread: false,
     timeSinceAction: "1 week ago"
@@ -57,6 +62,7 @@ const notifications = [{
     name: "Nathan Peterson",
     action: "reacted to your recent post",
     linkedContent: { type: "post", title: "5 end-game strategies to increase your win rate" },
+    image: null,
     message: null,
     isUnread: false,
     timeSinceAction: "2 weeks ago"
@@ -79,9 +85,7 @@ function MainContainer() {
       return null;
     } else if (linkedContent.type === "post" || linkedContent.type === "group") {
       return <a href="#">{linkedContent.title}</a>;
-    } else if (linkedContent.type === "image") {
-      return <img src={linkedContent.src} alt={linkedContent.alt} />;
-    }
+    } 
     return null;
   }
 
@@ -92,19 +96,14 @@ function MainContainer() {
           Notifications 3
           <button>Mark all as read</button>
         </header>
-        <div>
           {notifications.map((notification) => (
-            <div key={notification.index}>
-              <img src={notification.avatar} alt={notification.name}/>
-              <div>
-                <div>
-                <div>{notification.name}{notification.action} {renderLinkedContent(notification.linkedContent)}</div>
+            <div key={notification.index} className={notification.image ? "notification-image-div" : "notification-link-div"}>
+              <img src={notification.avatar} alt={notification.name} className="avatar" />
+                <div>{notification.name}{notification.action}{renderLinkedContent(notification.linkedContent)}</div>
                 <div>{notification.timeSinceAction}</div>
-                </div>
-              </div>
+                {notification.image && (<img src={notification.image.src} alt={notification.image.alt} className="thumbnail" />)}
             </div>
           ))}
-        </div>
       </div>
     </>
   )

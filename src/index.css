@@ -33,5 +33,37 @@ body {
   margin-bottom: 20px;
 }
 
+.notification-link-div, 
+.notification-image-div {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: start;
+  justify-content: start;
+}
+
+.notification-link-div {
+  grid-template-columns: auto 1fr;
+}
+
+.notification-image-div {
+  grid-template-columns: auto 1fr auto;
+}
+
+.avatar,
+.thumbnail {
+  width: 35px;
+  height: auto;
+  grid-row: 1 / span 2;
+  cursor: pointer;
+}
+
+.avatar {
+  grid-column: 1;
+}
+
+.thumbnail {
+  grid-column: 3;
+}
+
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
