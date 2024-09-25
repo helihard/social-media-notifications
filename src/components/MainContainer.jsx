@@ -88,6 +88,11 @@ function MainContainer() {
     setNotifications(readNotifications);
   }
 
+  const markAllAsUnread = () => {
+    const unreadNotifications = notifications.map((notification) => ({...notification, isUnread: true}));
+    setNotifications(unreadNotifications);
+  }
+
   function toggleNotification(index) {
     setNotifications((prevNotifications) =>
       prevNotifications.map((notification, i) =>
@@ -124,7 +129,7 @@ function MainContainer() {
       <div id="main-container">
         <header>
           <div id="headline"><b>Notifications</b> {getNumberOfUnreadNotifications() && (<span id="number-of-unread">{getNumberOfUnreadNotifications()}</span>)}</div>
-          <button onClick={markAllAsRead}>Mark all as read</button>
+          {!getNumberOfUnreadNotifications() ? (<button onClick={markAllAsUnread}>Mark all as unread</button>) : (<button onClick={markAllAsRead}>Mark all as read</button>)}
         </header>
           {notifications.map((notification, index) => (
             <div key={index}>
