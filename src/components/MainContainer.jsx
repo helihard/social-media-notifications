@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import avatarAngelaGray from "../assets/images/avatar-angela-gray.webp";
 import avatarAnnaKim from "../assets/images/avatar-anna-kim.webp";
 import avatarJacobThompson from "../assets/images/avatar-jacob-thompson.webp";
@@ -7,7 +9,9 @@ import avatarNathanPeterson from "../assets/images/avatar-nathan-peterson.webp";
 import avatarRizkyHasanuddin from "../assets/images/avatar-rizky-hasanuddin.webp";
 import chess from "../assets/images/image-chess.webp";
 
-const notifications = [{
+function MainContainer() {
+  const [notifications, setNotifications] = useState([
+  {
     avatar: avatarMarkWebber,
     name: "Mark Webber",
     action: "reacted to your recent post",
@@ -43,7 +47,7 @@ const notifications = [{
     action: "sent you a private message",
     linkedContent: null,
     image: null,
-    message: "Hello, thanks for setting up the Chess Club. I&apos;ve been a member for a few weeks now and I&apos;m already having lots of fun and improving my game.",
+    message: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
     isUnread: false,
     timeSinceAction: "5 days ago"
   },
@@ -76,9 +80,27 @@ const notifications = [{
     isUnread: false,
     timeSinceAction: "2 weeks ago"
   }
-  ]
+  ]);
+  const [openNotificationIndexes, setOpenNotificationIndexes] = useState([]);
 
-function MainContainer() {
+  const markAllAsRead = () => {
+    const readNotifications = notifications.map((notification) => ({...notification, isUnread: false}));
+    setNotifications(readNotifications);
+  }
+
+  function toggleNotification(index) {
+    setNotifications((prevNotifications) =>
+      prevNotifications.map((notification, i) =>
+        i === index ? { ...notification, isUnread: false } : notification
+      )
+    );
+
+    setOpenNotificationIndexes((prevOpen) =>
+      prevOpen.includes(index)
+        ? prevOpen.filter((i) => i !== index) 
+        : [...prevOpen, index]
+    );
+  }
 
   function renderLinkedContent(linkedContent) {
     if (!linkedContent) {
@@ -91,18 +113,22 @@ function MainContainer() {
 
   function getNumberOfUnreadNotifications() {
     const unreadNotifications = notifications.filter((notification) => notification.isUnread);
-    return unreadNotifications.length;
+    if (unreadNotifications.length > 0) {
+      return unreadNotifications.length;
+    }
+      return null;
   }
 
   return (
     <>
       <div id="main-container">
         <header>
-          <div id="headline"><b>Notifications</b> <span id="number-of-unread">{getNumberOfUnreadNotifications()}</span></div>
-          <button>Mark all as read</button>
+          <div id="headline"><b>Notifications</b> {getNumberOfUnreadNotifications() && (<span id="number-of-unread">{getNumberOfUnreadNotifications()}</span>)}</div>
+          <button onClick={markAllAsRead}>Mark all as read</button>
         </header>
-          {notifications.map((notification) => (
-            <div key={notification.index} className={`${notification.image ? "notification-image-div" : "notification-link-div"} ${notification.isUnread ? "unread" : ""}`}>
+          {notifications.map((notification, index) => (
+            <div key={index}>
+              <div className={`${notification.image ? "notification-image-div" : "notification-link-div"} ${notification.isUnread ? "unread" : ""}`} onClick={() => toggleNotification(index)}>
               <img src={notification.avatar} alt={notification.name} className="avatar" />
                 <div>
                   <span className="name">{notification.name}</span>
@@ -111,6 +137,8 @@ function MainContainer() {
                 </div>
                 <div className="time-since-action">{notification.timeSinceAction}</div>
                 {notification.image && (<img src={notification.image.src} alt={notification.image.alt} className="thumbnail" />)}
+                </div>
+                <div>{notification.message && openNotificationIndexes.includes(index) && (<div>{notification.message}</div>)}</div>
             </div>
           ))}
       </div>

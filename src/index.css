@@ -82,6 +82,7 @@ button:active {
   align-items: start;
   justify-content: start;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .notification-link-div {
