@@ -25,9 +25,9 @@ body {
 
 #main-container {
   background-color: var(--white);
-  width: 375px;
+  width: 340px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -112,7 +112,7 @@ button:active {
 
 .thumbnail {
   grid-column: 3;
-  margin-left: 10px;
+  margin-left: 18px;
 }
 
 .name {
@@ -130,8 +130,17 @@ button:active {
   margin-left: 5px;
 }
 
+.unread-dot {
+  color: var(--red);
+  font-size: 8px;
+  margin-left: 8px;
+  position: relative;
+  bottom: 2px;
+}
+
 .time-since-action {
   color: var(--grayishblue);
+  padding-top: 2px;
 }
 
 a:link,

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
 
 import avatarAngelaGray from "../assets/images/avatar-angela-gray.webp";
 import avatarAnnaKim from "../assets/images/avatar-anna-kim.webp";
@@ -76,11 +78,13 @@ function MainContainer() {
     name: "Anna Kim",
     action: "left the group",
     linkedContent: { type: "group", title: "Chess Club" },
+    image: null,
     message: null,
     isUnread: false,
     timeSinceAction: "2 weeks ago"
   }
   ]);
+
   const [openNotificationIndexes, setOpenNotificationIndexes] = useState([]);
 
   const markAllAsRead = () => {
@@ -138,7 +142,8 @@ function MainContainer() {
                 <div>
                   <span className="name">{notification.name}</span>
                   <span className="action">{notification.action}</span>
-                  <span className="linked-content">{renderLinkedContent(notification.linkedContent)}</span>
+                  {notification.linkedContent && (<span className="linked-content">{renderLinkedContent(notification.linkedContent)}</span>)}
+                  {notification.isUnread && (<span className="unread-dot"><FontAwesomeIcon icon={faCircle} /></span>)}
                 </div>
                 <div className="time-since-action">{notification.timeSinceAction}</div>
                 {notification.image && (<img src={notification.image.src} alt={notification.image.alt} className="thumbnail" />)}
