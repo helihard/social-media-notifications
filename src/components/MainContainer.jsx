@@ -93,8 +93,10 @@ function MainContainer() {
   }
 
   const markAllAsUnread = () => {
-    const unreadNotifications = notifications.map((notification) => ({...notification, isUnread: true}));
+    const unreadNotifications = notifications.map((notification) => 
+      notification.isUnread ? notification : ({...notification, isUnread: true}));
     setNotifications(unreadNotifications);
+    setOpenNotificationIndexes([]);
   }
 
   function toggleNotification(index) {
