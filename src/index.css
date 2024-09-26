@@ -25,9 +25,10 @@ body {
 
 #main-container {
   background-color: var(--white);
-  width: 340px;
+  min-width: 340px;
+  max-width: 575px;
   border-radius: 10px;
-  padding: 20px 16px;
+  padding: 20px 16px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -77,7 +78,7 @@ button:active {
 
 .notification-link-div, 
 .notification-image-div {
-  padding: 12px 15px;
+  padding: 15px;
   display: grid;
   grid-template-rows: auto auto;
   align-items: start;
@@ -121,6 +122,10 @@ button:active {
   font-weight: 800;
   margin-right: 5px;
   cursor: pointer;
+}
+
+.name:hover {
+  color: var(--blue);
 }
 
 .action {
