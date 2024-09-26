@@ -148,7 +148,7 @@ function MainContainer() {
                 <div className="time-since-action">{notification.timeSinceAction}</div>
                 {notification.image && (<img src={notification.image.src} alt={notification.image.alt} className="thumbnail" />)}
                 </div>
-                <div>{notification.message && openNotificationIndexes.includes(index) && (<div>{notification.message}</div>)}</div>
+                <div>{notification.message && openNotificationIndexes.includes(index) && (<div className="message-div">{notification.message}</div>)}</div>
             </div>
           ))}
       </div>
