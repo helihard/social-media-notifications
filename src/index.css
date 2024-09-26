@@ -28,7 +28,7 @@ body {
   min-width: 340px;
   max-width: 575px;
   border-radius: 10px;
-  padding: 20px 16px 0px;
+  padding: 25px 23px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -154,7 +154,7 @@ button:active {
   margin-left: 60px;
   margin-right: 15px;
   border: 1px solid var(--lightgrayishblue1);
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 15px;
   color: var(--darkgrayishblue);
 }
